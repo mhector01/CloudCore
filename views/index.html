@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CloudCore-Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        <h1 class="text-center text-success mb-4">Infraestructura CloudCore</h1>
+        <p class="text-center mb-5">Monitoreo de servidores y Componentes de Hardware</p>
+
+        <table class="table table-dark table-hover table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>Hostname</th>
+                    <th>Dirección IP</th>
+                    <th>Sistema Operativo</th>
+                    <th>Hardware Instalado</th>
+                    <th>Especificación</th>
+                    <th>Capacidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in servidores %}
+                <tr>
+                    <td>{{ item.hostname }}</td>
+                    <td>{{ item.direccion_ip }}</td>
+                    <td>{{ item.sistema_operativo }}</td>
+                    <td>{{ item.tipo }}</td>
+                    <td>{{ item.especificacion }}</td>
+                    <td>
+                        {% if item.capacidad_gb %}
+                            {{ item.capacidad_gb}} GB
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="text-center text-danger py-4">
+                        No hay datos en la base de datos o MySQL está apagado
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
