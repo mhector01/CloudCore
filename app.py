@@ -10,10 +10,15 @@ controlador = ServidorController()
 
 def index():
     # 1. El controlador pide los datos al modelo (MySQL)
-    datos = controlador.obtener_inventario_completo()
+    # datos = controlador.obtener_inventario_completo()
+    # Cambio: Ahora pedimos el paquete completo DB + Hardware
+    
+    paquete_datos = controlador.obtener_datos_dashboard()
 
     # 2. Enviamos esos datos a nuestro archivo HTML
-    return render_template('index.html', servidores=datos)
+    return render_template('index.html',
+                            servidores=paquete_datos['servidores'],
+                            monitoreo=paquete_datos['monitoreo'])
 
 
 if __name__ == "__main__":

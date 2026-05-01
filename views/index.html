@@ -11,6 +11,39 @@
         <h1 class="text-center text-success mb-4">Infraestructura CloudCore</h1>
         <p class="text-center mb-5">Monitoreo de servidores y Componentes de Hardware</p>
 
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white shadow-lg border-0 h-100">
+                    <h6 class="text-uppercase opacity-75">uso de cpu</h6>
+                    <h2 class="display-4 fw-bold">{{ monitoreo.cpu_uso}}%</h2>
+                    <div class="progress bg-white bg-opacity-25" style="height: 10px;">
+                        <div class="progress-bar bg-white" style="width: {{ monitoreo.cpu_uso }}%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-info text-white shadow-lg border-0 h-100">
+                    <div class="card-body text-center">
+                        <h6 class="text-uppercase opacity-75">Uso de RAM</h6>
+                        <h2 class="display-4 fw-bold">{{ monitoreo.ram_uso}}%</h2>
+                        <p class="mb-0">Total: {{ monitoreo.ram_total }} GB </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-warning text-white shadow-lg border-0 h-100">
+                    <div class="card-body text-center">
+                        <h6 class="text-uppercase opacity-75">Uso de Disco</h6>
+                        <h2 class="display-4 fw-bold">{{ monitoreo.disco_uso}}%</h2>
+                        <small>Unidad Principal C:/</small>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
         <table class="table table-dark table-hover table-bordered align-middle">
             <thead>
                 <tr>
